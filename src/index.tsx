@@ -6,27 +6,30 @@ const WIDTH = 800
 const HEIGHT = 550
 
 function draw() {
-  const canvas = document.getElementById('canvas') as HTMLCanvasElement
-  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
-  canvas.width = WIDTH
-  canvas.height = HEIGHT
-  ctx.fillStyle = 'white'
-  ctx.fillRect(0, 0, WIDTH, HEIGHT)
-  ctx.fill()
-  const imgData = ctx.getImageData(0, 0, WIDTH, HEIGHT)
-  const pix = imgData.data
-  setInterval(() => {
-    for (let i = 0; i < pix.length; i += 4) {
-      const color = Math.random() * 255 + 50
-      pix[i] = color
-      pix[i + 1] = color
-      pix[i + 2] = color
-    }
-    ctx.putImageData(imgData, 0, 0)
-  }, 30)
+  const canvasArr = document.getElementsByClassName('canvas')
+  Array.from(canvasArr).forEach((element: Element) => {
+    const canvas = element as HTMLCanvasElement
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+    canvas.width = WIDTH
+    canvas.height = HEIGHT
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, WIDTH, HEIGHT)
+    ctx.fill()
+    const imgData = ctx.getImageData(0, 0, WIDTH, HEIGHT)
+    const pix = imgData.data
+    setInterval(() => {
+      for (let i = 0; i < pix.length; i += 4) {
+        const color = Math.random() * 255 + 50
+        pix[i] = color
+        pix[i + 1] = color
+        pix[i + 2] = color
+      }
+      ctx.putImageData(imgData, 0, 0)
+    }, 30)
+  })
 }
 
-const PageNotFoundError = () => {
+const PageNotFoundError: React.FC = () => {
   useEffect(() => {
     draw()
   }, [])
@@ -40,7 +43,7 @@ const PageNotFoundError = () => {
         <div />
       </div>
 
-      <canvas id='canvas' />
+      <canvas className='canvas' />
     </div>
   )
 }
