@@ -2,11 +2,11 @@
 
 > Funny page not found experiment
 
-[![NPM](https://img.shields.io/npm/v/plane.svg)](https://www.npmjs.com/package/plane) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/plane.svg)](https://www.npmjs.com/package/experiment-page-not-found) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## [Demo](https://krasovsky22.github.io/experiment-page-not-found/)
 
-![Test Image 1](plane.gif)
+![Test Image 1](screenshot.gif)
 
 ## Install
 
@@ -19,12 +19,12 @@ npm install --save krasovsky22/experiment-page-not-found
 ```tsx
 import React, { Component } from 'react'
 
-import PlaneExperiment from 'css_plane'
-import 'css_plane/dist/index.css'
+import PageNotFoundError from 'experiment-page-not-found'
+import 'experiment-page-not-found/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <PlaneExperiment />
+    return <PageNotFoundError />
   }
 }
 ```

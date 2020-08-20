@@ -1,80 +1,129 @@
 /* add css module styles here (optional) */
 
-.component-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: inherit;
-  background: transparent;
+.error-container {
+  position: relative;
+  height: 100%;
   overflow: hidden;
 }
 
-.earth {
-  position: relative;
-  width: 50%;
-  background: #0588e4
-    url('https://raw.githubusercontent.com/krasovsky22/experiment-css-responsive-plane/master/src/assets/earth.png');
-  background-size: cover;
-  border-radius: 50%;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.85);
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  transition: 0.5s;
-  animation: animate 12s linear infinite;
+@keyframes lineMovingDown {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 100%;
+  }
 }
 
-.earth:active {
-  transform: scale(5);
+@keyframes h1TextAnimation {
+  0% {
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+  33% {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+  66% {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  }
 }
 
-.earth:active .plane {
-  transform: rotate(-90deg) scale(0.2) !important;
-}
-
-.earth::before {
-  content: '';
+h1 {
+  z-index: 3;
   position: absolute;
+  font: bold 200px/200px Arial, sans-serif;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  width: 100%;
+  margin-left: -50%;
+  height: 200px;
+  text-align: center;
+  color: transparent;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  animation: h1TextAnimation 2s linear infinite;
+}
+
+.frame div:nth-child(1) {
+  animation-delay: 0;
+}
+
+.frame div:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.frame div:nth-child(3) {
+  animation-delay: 8s;
+}
+
+canvas {
   width: 100%;
   height: 100%;
-  background: url('https://raw.githubusercontent.com/krasovsky22/experiment-css-responsive-plane/master/src/assets/cloud.png');
-  background-size: cover;
-  border-radius: 50%;
-  overflow: hidden;
-  animation: animate 12s linear infinite;
-  z-index: 1;
 }
 
-@keyframes animate {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: calc(719px - 80%) 0;
-  }
+.frame div {
+  position: absolute;
+  left: 0;
+  top: -20%;
+  width: 100%;
+  height: 20%;
+  background-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: lineMovingDown 12s linear infinite;
 }
 
-/* to make it responsive */
-.earth:after {
-  content: '';
-  display: block;
-  padding-bottom: 100%;
-}
-
-.plane {
-  width: 20%;
-  background: center / contain no-repeat
-    url('https://raw.githubusercontent.com/krasovsky22/experiment-css-responsive-plane/master/src/assets/plane.png');
-  transform: rotate(-90deg);
-  transition: 0.5s;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* to make plane responsive */
-.plane:after {
-  content: '';
-  display: block;
-  padding-bottom: 100%;
+.frame {
+  z-index: 3;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 19%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    radial,
+    center center,
+    0px,
+    center center,
+    100%,
+    color-stop(0%, rgba(0, 0, 0, 0)),
+    color-stop(19%, rgba(0, 0, 0, 0)),
+    color-stop(100%, rgba(0, 0, 0, 0.9))
+  ); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 19%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 19%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* Opera 12+ */
+  background: -ms-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 19%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* IE10+ */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 19%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#00000000', endColorstr = '#e6000000', GradientType = 1); /* IE6-9 fallback on horizontal gradient */
 }
